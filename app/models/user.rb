@@ -6,4 +6,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+  def is_teacher
+    self.kind == 'teacher'
+  end
+
+  def is_student
+    self.kind == 'student'
+  end
+
 end
