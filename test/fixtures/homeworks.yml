@@ -1,11 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: First homework
   description: MyText
   due_date: 2016-09-27 19:37:01
+  created_by_id: 1
 
 two:
-  title: MyString
+  title: Second homework
   description: MyText
   due_date: 2016-09-27 19:37:01
+  created_by_id: 2
+
+three:
+  title: Third homework
+  description: MyText
+  due_date: 2016-09-27 19:37:01
+  created_by_id: 3

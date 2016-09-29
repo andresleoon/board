@@ -1,3 +1,3 @@
 class SubmissionFile < ApplicationRecord
-  has_attachment :file
+  has_attached_file :file
 end

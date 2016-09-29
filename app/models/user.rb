@@ -7,6 +7,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Many relationships.
+  has_many :homeworks, foreign_key: 'created_by_id'
+  has_many :assignments
 
   def is_teacher
     self.kind == 'teacher'
