@@ -7,15 +7,17 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     sign_in @user
-    get root_path
 
     student = users(:two)
-    homework = homeworks(:one)
-    homework.assignments.create(user: student)
+    @user.homeworks.create(
+      title: 'First homework',
+      description: 'Lorem ipsum'
+    )
+    @user.homeworks.first.assignments.create(user: student)
 
+    get root_path
     assert_response :success
-    assert_select 'h5', homework.title
-    assert_select 'h5 span', homework.assignments.count
+    assert_select 'h5', @user.homeworks.first.title
   end
 
 end

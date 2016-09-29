@@ -1,4 +1,20 @@
 <div class="container">
     <h1>Teacher</h1>
-    <p>Find me in app/views/home/index.html.erb</p>
+
+    <div class="list-group">
+        <%= current_user.homeworks.first %>
+        <% if !current_user.homeworks.blank? %>
+            <% for homework in current_user.homeworks %>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <h5 class="list-group-item-heading"><%= homework.title %></h5>
+                    <p class="list-group-item-text"><%= homework.description %></p>
+                    <span><%= homework.assignments.count %></span>
+                </a>
+            <% end %>
+        <% else %>
+
+        <% end %>
+
+    </div>
+
 </div>
