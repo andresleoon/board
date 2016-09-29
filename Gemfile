@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -42,6 +42,8 @@ gem 'bootstrap_form', '~> 2.5.0'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.11'
+
+gem 'paperclip', '~> 5.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
