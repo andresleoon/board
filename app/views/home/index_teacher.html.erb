@@ -1,20 +1,21 @@
-<div class="container">
-    <h1>Teacher</h1>
-
-    <div class="list-group">
-        <%= current_user.homeworks.first %>
-        <% if !current_user.homeworks.blank? %>
-            <% for homework in current_user.homeworks %>
-                <a href="#" class="list-group-item list-group-item-action">
-                    <h5 class="list-group-item-heading"><%= homework.title %></h5>
-                    <p class="list-group-item-text"><%= homework.description %></p>
-                    <span><%= homework.assignments.count %></span>
-                </a>
+<section class="home">
+    <div class="container">
+        <div class="list-group">
+            <% if !current_user.homeworks.blank? %>
+                <% for homework in current_user.homeworks %>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <h5 class="list-group-item-heading"><%= homework.title %></h5>
+                        <p class="list-group-item-text"><%= homework.description %></p>
+                        <span class="text-muted small"> <%= homework.assignments.count %> Students assigned </span>
+                    </a>
+                <% end %>
+            <% else %>
+                <div class="empty text-xs-center">
+                    <h2>You have no homeworks</h2>
+                    <p class="lead">Create your first homework and you'll see them here.</p>
+                    <a href="#" class="btn btn-success">Create your first one</a>
+                </div>
             <% end %>
-        <% else %>
-
-        <% end %>
-
+        </div>
     </div>
-
-</div>
+</section>

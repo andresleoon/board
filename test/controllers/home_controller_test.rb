@@ -8,6 +8,10 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     sign_in @user
 
+    # No homeworks.
+    get root_path
+    assert_select 'h2', 'You have no homeworks'
+
     student = users(:two)
     @user.homeworks.create(
       title: 'First homework',
@@ -15,8 +19,8 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     )
     @user.homeworks.first.assignments.create(user: student)
 
+    # One homework in template.
     get root_path
-    assert_response :success
     assert_select 'h5', @user.homeworks.first.title
   end
 
