@@ -1,9 +1,9 @@
-<section class="home">
+<section class="page">
     <div class="container">
         <div class="list-group">
             <% if !current_user.homeworks.blank? %>
                 <% for homework in current_user.homeworks %>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="<%= homework_path(homework) %>" class="list-group-item list-group-item-action">
                         <h5 class="list-group-item-heading"><%= homework.title %></h5>
                         <p class="list-group-item-text"><%= homework.description %></p>
                         <span class="text-muted small"> <%= homework.assignments.count %> Students assigned </span>
