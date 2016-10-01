@@ -11,6 +11,10 @@ class User < ApplicationRecord
   has_many :homeworks, foreign_key: 'created_by_id'
   has_many :assignments
 
+  def full_name
+    "#{self.first_name } #{self.last_name}"
+  end
+
   def is_teacher
     self.kind == 'teacher'
   end

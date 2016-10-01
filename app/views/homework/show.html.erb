@@ -1,8 +1,21 @@
-<section class="page">
+<section class="page homework-detail">
 
     <div class="container">
-        <h1>Homework#show</h1>
-        <p>Find me in app/views/homework/show.html.erb</p>
+        <h1><%= @homework.title %></h1>
+        <p class="lead"><%= @homework.description %></p>
+
+        <h4 class="submission-count"><%= @homework.submissions.count %> Submissions</h4>
+        <% if !@homework.submissions.blank? %>
+            <% for submission in @homework.submissions %>
+                <a href="" class="list-group-item list-group-item-action">
+                    <h5 class="list-group-item-heading"><%= submission.user.full_name %></h5>
+                    <p class="text-muted"><%= submission.created_at.strftime('%c') %></p>
+                </a>
+            <% end %>
+        <% else %>
+
+        <% end %>
+
     </div>
 
 </section>

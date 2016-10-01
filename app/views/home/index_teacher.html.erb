@@ -4,7 +4,7 @@
             <% if !current_user.homeworks.blank? %>
                 <% for homework in current_user.homeworks %>
                     <a href="<%= homework_path(homework) %>" class="list-group-item list-group-item-action">
-                        <h5 class="list-group-item-heading"><%= homework.title %></h5>
+                        <h4 class="list-group-item-heading"><%= homework.title %></h4>
                         <p class="list-group-item-text"><%= homework.description %></p>
                         <span class="text-muted small"> <%= homework.assignments.count %> Students assigned </span>
                     </a>
