@@ -1,14 +1,19 @@
 require 'test_helper'
 
 class HomeworkControllerTest < ActionDispatch::IntegrationTest
-  test "should get show" do
-    get homework_show_url
-    assert_response :success
+  setup do
+    @user = users(:one)
+    @homework = @user.homeworks.create(
+      title: 'Second homework',
+      description: 'Lorem ipsum'
+    )
   end
 
-  test "should get create" do
-    get homework_create_url
-    assert_response :success
+  test "should get show" do
+    sign_in @user
+
+    get homework_path(@homework)
+    assert_select 'h1', @homework.title
   end
 
 end
