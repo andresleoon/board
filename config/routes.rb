@@ -9,6 +9,9 @@ Rails.application.routes.draw do
             }
 
   resources :homework
-  resources :submission
+
+  resources :submission do
+    resources :submission_file
+  end
 
 end

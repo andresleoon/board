@@ -10,6 +10,7 @@ class User < ApplicationRecord
   # Many relationships.
   has_many :homeworks, foreign_key: 'created_by_id'
   has_many :assignments
+  has_many :submissions
 
   def full_name
     "#{self.first_name } #{self.last_name}"

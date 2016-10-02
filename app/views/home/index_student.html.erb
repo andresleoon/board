@@ -1,8 +1,21 @@
 <section class="page">
-
     <div class="container">
-        <h1>Student</h1>
-        <p>Find me in app/views/home/index.html.erb</p>
+        <div class="list-group">
+            <% if !current_user.assignments.blank? %>
+                <% for assignment in current_user.assignments %>
+                    <a href="<%= homework_path(assignment.homework) %>" class="list-group-item list-group-item-action">
+                        <h4 class="list-group-item-heading"><%= assignment.homework.title %></h4>
+                        <p class="list-group-item-text"><%= assignment.homework.description %></p>
+                        <span class="text-muted small">Due date: <strong><%= assignment.homework.due_date %></strong></span>
+                    </a>
+                <% end %>
+            <% else %>
+                <div class="empty text-xs-center">
+                    <h2>You have no homeworks</h2>
+                    <p class="lead">Create your first homework and you'll see them here.</p>
+                    <a href="#" class="btn btn-success">Create your first one</a>
+                </div>
+            <% end %>
+        </div>
     </div>
-
 </section>

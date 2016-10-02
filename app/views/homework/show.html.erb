@@ -4,17 +4,41 @@
         <h1><%= @homework.title %></h1>
         <p class="lead"><%= @homework.description %></p>
 
-        <h4 class="submission-count"><%= @homework.submissions.count %> Submissions</h4>
-        <% if !@homework.submissions.blank? %>
-            <% for submission in @homework.submissions %>
-                <a href="<%= submission_path(submission) %>" class="list-group-item list-group-item-action">
-                    <h5 class="list-group-item-heading"><%= submission.user.full_name %></h5>
-                    <p class="text-muted"><%= submission.created_at.strftime('%c') %></p>
-                </a>
+        <% if current_user.is_teacher() %>
+            <h4 class="submission-count"><%= @homework.submissions.count %> Submissions</h4>
+            <% if !@homework.submissions.blank? %>
+                <% for submission in @homework.submissions %>
+                    <a href="<%= submission_path(submission) %>" class="list-group-item list-group-item-action">
+                        <h5 class="list-group-item-heading"><%= submission.user.full_name %></h5>
+                        <p class="text-muted"><%= submission.created_at.strftime('%c') %></p>
+                    </a>
+                <% end %>
+            <% else %>
+                <p class="lead text-muted">You'll see students submissions listed here.</p>
             <% end %>
         <% else %>
-            <p class="lead text-muted">You'll see students submissions listed here.</p>
+
+            <div class="alert alert-info" role="alert">
+                This homework is due on <strong><%= @homework.due_date %></strong>
+            </div>
+            <div class="list-group submission-files-list">
+                <div class="list-group-item list-group-item-action active">
+                    0 versions of this homework.
+                </div>
+                <% if !current_user.submissions.where(homework: @homework).blank? %>
+                    <% for submission in current_user.submissions.where(homework: @homework) %>
+                        <% for submission_file in submission.submission_files %>
+                            <a href="<%= submission_file.file.url %>" class="list-group-item list-group-item-action">
+                                <span class="file-name"><%= submission_file.file_file_name %></span> <span class="text-muted small"><%= submission_file.created_at %></span>
+                            </a>
+                        <% end %>
+                        <br>
+                        <a href="<%= new_submission_submission_file_path(submission) %>" class="btn btn-success">Add file</a>
+                    <% end %>
+                <% end %>
+            </div>
         <% end %>
+
     </div>
 
 </section>

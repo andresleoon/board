@@ -1,0 +1,16 @@
+<section class="page submission-file-detail">
+    <div class="container">
+        <h2><%= @submission.homework.title %></h2>
+        <p>Upload your homework</p>
+
+        <%= bootstrap_form_tag url: submission_submission_file_index_path(@submission), :html => {:multipart => true} do |f| %>
+            <div class="form-group">
+                <%= file_field_tag "file[]" %>
+            </div>
+            <div class="form-group">
+                <%= f.submit 'Upload', class: 'btn btn-sm btn-success' %>
+            </div>
+        <% end %>
+
+    </div>
+</section>
