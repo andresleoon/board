@@ -7,7 +7,7 @@
         <h4 class="submission-count"><%= @homework.submissions.count %> Submissions</h4>
         <% if !@homework.submissions.blank? %>
             <% for submission in @homework.submissions %>
-                <a href="" class="list-group-item list-group-item-action">
+                <a href="<%= submission_path(submission) %>" class="list-group-item list-group-item-action">
                     <h5 class="list-group-item-heading"><%= submission.user.full_name %></h5>
                     <p class="text-muted"><%= submission.created_at.strftime('%c') %></p>
                 </a>
@@ -15,7 +15,6 @@
         <% else %>
             <p class="lead text-muted">You'll see students submissions listed here.</p>
         <% end %>
-
     </div>
 
 </section>

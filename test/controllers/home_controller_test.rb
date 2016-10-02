@@ -21,7 +21,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
     # One homework in template.
     get root_path
-    assert_select 'h5', @user.homeworks.first.title
+    assert_select 'h4', @user.homeworks.first.title
   end
 
 end
