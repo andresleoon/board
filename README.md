@@ -1,4 +1,5 @@
 # Board
+[![Build Status](https://travis-ci.org/PabloVallejo/board.svg?branch=master)](https://travis-ci.org/PabloVallejo/board)
 
 Simple assignments app
 
