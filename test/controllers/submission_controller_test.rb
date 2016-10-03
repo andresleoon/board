@@ -6,11 +6,18 @@ class SubmissionControllerTest < ActionDispatch::IntegrationTest
     student = users(:two)
     @homework = @teacher.homeworks.create(
       title: 'Second homework',
-      description: 'Lorem ipsum'
+      description: 'Lorem ipsum',
+      due_date: DateTime.now() + 5
     )
-    @submission = @homework.submissions.create(
-      user: student
+
+    @assignment = @homework.assignments.create(
+      user: student,
     )
+
+    @submission = Submission.where(
+      user: student,
+      homework: @homework,
+    ).first
 
     @file = @submission.submission_files.create(
       file: File.new("#{fixture_path}/files/1x1.jpg"),

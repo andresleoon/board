@@ -1,20 +1,26 @@
 <section class="page submission-detail">
-    <div class="container">
-        <h1><%= @submission.homework.title %></h1>
-        <p class="text-muted">Submitted by <strong><%= @submission.user.full_name %></strong> on <%= @submission.created_at %></p>
-        <p class="lead"><%= @submission.homework.description %></p>
-
-        <div class="list-group submission-files-list">
-            <div class="list-group-item list-group-item-action active">
-                <%= @submission.submission_files.count %> versions of this homework.
-            </div>
-            <% if !@submission.submission_files.blank? %>
-                <% for file in @submission.submission_files %>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <span class="file-name"><%= file.file_file_name %></span> <span class="text-muted small"><%= file.created_at %></span>
-                    </a>
-                <% end %>
-            <% end %>
+    <% if @submission.homework.is_due() %>
+        <div class="alert alert-danger" role="alert">
+            This homework was due on <strong><%= @homework.due_date %></strong>
         </div>
-    </div>
+    <% else %>
+        <div class="container">
+            <h1><%= @submission.homework.title %></h1>
+            <p class="text-muted">Submitted by <strong><%= @submission.user.full_name %></strong> on <%= @submission.created_at %></p>
+            <p class="lead"><%= @submission.homework.description %></p>
+
+            <div class="list-group submission-files-list">
+                <div class="list-group-item list-group-item-action active">
+                    <%= @submission.submission_files.count %> versions of this homework.
+                </div>
+                <% if !@submission.submission_files.blank? %>
+                    <% for file in @submission.submission_files %>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <span class="file-name"><%= file.file_file_name %></span> <span class="text-muted small"><%= file.created_at %></span>
+                        </a>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
 </section>

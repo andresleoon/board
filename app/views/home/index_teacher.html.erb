@@ -6,7 +6,9 @@
                     <a href="<%= homework_path(homework) %>" class="list-group-item list-group-item-action">
                         <h4 class="list-group-item-heading"><%= homework.title %></h4>
                         <p class="list-group-item-text"><%= homework.description %></p>
-                        <span class="text-muted small"> <%= homework.assignments.count %> Students assigned </span>
+                        <span class="text-muted small">
+                            <%= pluralize(homework.assignments.count, 'student') %> assigned
+                        </span>
                     </a>
                 <% end %>
             <% else %>

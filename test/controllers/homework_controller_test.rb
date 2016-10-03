@@ -5,7 +5,8 @@ class HomeworkControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     @homework = @user.homeworks.create(
       title: 'Second homework',
-      description: 'Lorem ipsum'
+      description: 'Lorem ipsum',
+      due_date: DateTime.now() + 5
     )
   end
 

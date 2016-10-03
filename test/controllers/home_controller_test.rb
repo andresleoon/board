@@ -15,7 +15,8 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     student = users(:two)
     @user.homeworks.create(
       title: 'First homework',
-      description: 'Lorem ipsum'
+      description: 'Lorem ipsum',
+      due_date: DateTime.now() + 5
     )
     @user.homeworks.first.assignments.create(user: student)
 
