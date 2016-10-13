@@ -15,3 +15,21 @@ $ docker-compose up
 ```
 
 then open in browser http://localhost:3000
+
+### Don't forget apply the migration 
+Run this command 
+
+```bash
+$ docker-compose build
+```
+
+After, Copy this id , The id can be different, but sure the name container is board_web 
+ 
+![Board](http://i.imgur.com/lQpCyyv.png)
+
+After that run that command
+```bash
+$ docker exec 3c76d60c9e93 bin/rails db:migrate RAILS_ENV=development
+```
+
+and enjoy !!
